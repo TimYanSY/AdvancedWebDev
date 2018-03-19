@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Component 1</title>
+    <link rel="stylesheet" href="first-component.css"/>
+    <script src="https://unpkg.com/react@16.0.0-rc.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.0.0-rc.2/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+    class RandBox extends React.Component {
+      render() {
+        const hStyles = [{fontSize: '0.5em'}, {fontSize: '1em'}, {fontSize: '1.5em'}, {fontSize: '2em'}];
+        const bColors = [{width: 50, height: 50, backgroundColor: 'powderblue'}, {width: 150, height: 150, backgroundColor: 'steelblue'}];
+        return (
+          <div>
+            <div style={bColors[getRandomInt(bColors.length)]}>
+              <h2 style={hStyles[getRandomInt(hStyles.length)]}>Hi</h2>
+            </div>
+          </div>
+        );
+      }
+    }
+    ReactDOM.render(<RandBox />, document.getElementById("app"));
+  </script>
+</body>
+</html>
