@@ -12,6 +12,13 @@ class App extends Component {
     this.state = {
       myList: this.props.myList
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const myList = [...this.state.myList, this.state.inputText];
+    this.setState({myList, inputText: ''});
   }
 
   render() {
@@ -20,16 +27,11 @@ class App extends Component {
         <List
           list={this.state.myList}
         />
-        <form onSubmit={
-          (e) => {
-            e.preventDefault();
-            const myList = [...this.state.myList, this.state.inputText];
-            this.setState({myList, inputText: ''});
-          }
-        }>
+        <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             name="inputText"
+            placeholder="write things to do"
             value={this.state.inputText}
             onChange={(e) => {
               this.setState({inputText: e.target.value})
